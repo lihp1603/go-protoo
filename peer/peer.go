@@ -3,8 +3,8 @@ package peer
 import (
 	"encoding/json"
 
-	"github.com/cloudwebrtc/go-protoo/logger"
-	"github.com/cloudwebrtc/go-protoo/transport"
+	"github.com/lihp1603/go-protoo/logger"
+	"github.com/lihp1603/go-protoo/transport"
 )
 
 type PeerErr transport.TransportErr
@@ -66,8 +66,10 @@ func (peer *Peer) Run() {
 			peer.handleMessage(msg)
 		case err := <-peer.transport.OnErr:
 			peer.handleErr(err)
+			return
 		case err := <-peer.transport.OnClose:
 			peer.handleClose(err)
+			return
 		case data := <-peer.SendRequest:
 			peer.sendRequest(data)
 		}

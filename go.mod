@@ -1,4 +1,4 @@
-module github.com/cloudwebrtc/go-protoo
+module github.com/lihp1603/go-protoo
 
 go 1.12
 

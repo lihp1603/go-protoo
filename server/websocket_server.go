@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/cloudwebrtc/go-protoo/logger"
-	"github.com/cloudwebrtc/go-protoo/transport"
 	"github.com/gorilla/websocket"
+	"github.com/lihp1603/go-protoo/logger"
+	"github.com/lihp1603/go-protoo/transport"
 )
 
 type WebSocketServerConfig struct {
@@ -61,7 +61,8 @@ func (server *WebSocketServer) handleWebSocketRequest(writer http.ResponseWriter
 func (server *WebSocketServer) Bind(cfg WebSocketServerConfig) {
 	// Websocket handle func
 	http.HandleFunc(cfg.WebSocketPath, server.handleWebSocketRequest)
-	http.Handle("/", http.FileServer(http.Dir(cfg.HTMLRoot)))
+	//mediasoup-demo
+	// http.Handle("/", http.FileServer(http.Dir(cfg.HTMLRoot)))
 
 	if cfg.CertFile == "" || cfg.KeyFile == "" {
 		logger.Infof("non-TLS WebSocketServer listening on: %s:%d", cfg.Host, cfg.Port)
